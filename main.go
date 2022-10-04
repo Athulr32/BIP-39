@@ -259,26 +259,26 @@ func keyDerivation(hmacSeedBits string) {
 
 func main() {
 
-	// entropyByte, entropyHex := entropyGenerator()
+	entropyByte, entropyHex := entropyGenerator()
 
-	// entropyBit := byteToBit(entropyByte)
-
-
-	// //Add checksum to entropyBit
-	// checkSum(&entropyBit, entropyHex)
-
-	// //Get the mnemonic phrase from entropyBits
-	// mnemonics := words(entropyBit)
-	// fmt.Println(mnemonics)
-
-	// seed := mnemonicToSeed([]byte(mnemonics))
+	entropyBit := byteToBit(entropyByte)
 
 
-	// //Put the seed into HMAC-512 alogirthm
-	// hmacSeed := hmacHashing(seed)
-	// hmacSeedBits := byteToBit(hmacSeed)
-	// keyDerivation(hmacSeedBits)
+	//Add checksum to entropyBit
+	checkSum(&entropyBit, entropyHex)
 
-	fmt.Print(toBinary(3))
+	//Get the mnemonic phrase from entropyBits
+	mnemonics := words(entropyBit)
+	fmt.Println(mnemonics)
+
+	seed := mnemonicToSeed([]byte(mnemonics))
+
+
+	//Put the seed into HMAC-512 alogirthm
+	hmacSeed := hmacHashing(seed)
+	hmacSeedBits := byteToBit(hmacSeed)
+	keyDerivation(hmacSeedBits)
+
+	
 
 }
